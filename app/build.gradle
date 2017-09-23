@@ -1,0 +1,40 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 25
+    buildToolsVersion "25.0.1"
+    defaultConfig {
+        applicationId "anshay.test6"
+        minSdkVersion 22
+        targetSdkVersion 25
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    compile 'com.android.support:appcompat-v7:25.+'
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    testCompile 'junit:junit:4.12'
+
+    compile 'com.android.support:design:25.+'//支持谷歌默认的底部导航
+    compile 'com.squareup.okhttp3:okhttp:3.4.1'//okhttp3网络请求
+    compile 'com.google.code.gson:gson:2.8.1'//gson解析jason数据
+    compile 'com.github.bumptech.glide:glide:4.0.0-RC1'
+    compile 'com.youth.banner:banner:1.4.9'//图片轮播器的三方jar包
+    debugCompile 'com.amitshekhar.android:debug-db:1.0.0'//实时查看数据库的三方jar包
+
+    //引用的我所用到的NumbPlus的aar包（代码已混淆），其中注意要手动把menu文件复制过来，不然找不到
+    compile(name: 'NumB-release', ext: 'aar')
+}
